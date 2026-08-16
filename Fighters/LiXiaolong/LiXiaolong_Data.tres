@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DataContainer" format=3 uid="uid://ce1bjf3tpyngv"]
+[gd_resource type="Resource" script_class="DataContainer" format=3]
 
 [ext_resource type="Script" uid="uid://dfimvn5rd5jts" path="res://Scripts/SakugaEngine/Resources/FighterIntro.cs" id="31_186y0"]
 [ext_resource type="Resource" path="res://Fighters/LiXiaolong/LiXiaolong_Profile.tres" id="31_e31u1"]
