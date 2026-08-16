@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgreatwall001fst"]
+
+[ext_resource type="Texture2D" path="res://Stages/GreatWall/greatwall_bg.jpg" id="1_bg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wall"]
+sky_top_color = Color(0.4, 0.4, 0.5, 1)
+sky_horizon_color = Color(0.6, 0.5, 0.4, 1)
+
+[sub_resource type="Sky" id="Sky_wall"]
+sky_material = SubResource("ProceduralSkyMaterial_wall")
+
+[sub_resource type="Environment" id="Env_wall"]
+background_mode = 2
+sky = SubResource("Sky_wall")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[sub_resource type="StandardMaterial3D" id="Mat_wall_bg"]
+albedo_texture = ExtResource("1_bg")
+uv1_scale = Vector3(3, 1, 1)
+
+[sub_resource type="BoxMesh" id="Mesh_wall_bg"]
+material = SubResource("Mat_wall_bg")
+size = Vector3(40, 12, 0.1)
+
+[sub_resource type="BoxMesh" id="Mesh_floor"]
+material = SubResource("Mat_wall_bg")
+size = Vector3(20, 0.2, 2)
+
+[node name="GreatWall_Stage" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.722436, 0.540801, -0.430836, 0, 0.623102, 0.782141, 0.691437, -0.565047, 0.450152, 0, 2.2674, 0)
+layers = 3
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_wall")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("Mesh_floor")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -2)
+mesh = SubResource("Mesh_wall_bg")

@@ -10,6 +10,9 @@
 
 [sub_resource type="Resource" id="Resource_35cc3"]
 script = ExtResource("1_vy675")
+Velocity = 800
+UseInertia = true
+UseInput = false
 metadata/_custom_type_script = "uid://bgwrlqrhqb2a4"
 
 [sub_resource type="Resource" id="Resource_8m5r5"]

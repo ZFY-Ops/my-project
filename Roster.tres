@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FighterList" format=3 uid="uid://c8s3ip7gkhwq6"]
+[gd_resource type="Resource" script_class="FighterList" load_steps=16 format=3 uid="uid://c8s3ip7gkhwq6"]
 
 [ext_resource type="Script" uid="uid://c1vwroelg1kwb" path="res://Scripts/SakugaEngine/Resources/FighterList.cs" id="1_x0sfh"]
 [ext_resource type="Script" uid="uid://dg21wno6w513c" path="res://Scripts/SakugaEngine/Resources/ColorPaletteElement.cs" id="2_w00mg"]
@@ -7,10 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://b1ggpw8ltpaid" path="res://Fighters/Kaede/Instances/Fighter_Kaede.tscn" id="6_hd0eg"]
 [ext_resource type="PackedScene" uid="uid://dt6dqmcq5rept" path="res://Fighters/Dummy/Instances/Dummy_Fighter_Alt1.tscn" id="7_51ydv"]
 [ext_resource type="Resource" uid="uid://dti25wauqaxwy" path="res://Fighters/Kaede/Kaede_Profile.tres" id="7_w00mg"]
-[ext_resource type="PackedScene" uid="uid://clhsbniudqcvl" path="res://Fighters/Dummy/Instances/Dummy_Fighter_Alt2.tscn" id="8_hd0eg"]
-[ext_resource type="PackedScene" uid="uid://ccpxqtpspsog5" path="res://Fighters/Kaede/Instances/Fighter_Kaede_Alt.tscn" id="8_yn7sm"]
+[ext_resource type="PackedScene" uid="uid://clhsbniudqcvl" path="res://Fighters/Kaede/Instances/Fighter_Kaede_Alt.tscn" id="8_yn7sm"]
 [ext_resource type="PackedScene" uid="uid://bloh87idirh84" path="res://Fighters/Dummy/Instances/Dummy_Fighter_Alt3.tscn" id="9_w00mg"]
 [ext_resource type="PackedScene" uid="uid://3reeyb4tcc1i" path="res://Fighters/Dummy/Instances/Dummy_Fighter_Default.tscn" id="12_f2d14"]
+[ext_resource type="Resource" uid="uid://bguanyu001pr0f" path="res://Fighters/GuanYu/GuanYu_Profile.tres" id="13_guanyu"]
+[ext_resource type="Resource" uid="uid://bhuamulan01prf" path="res://Fighters/HuaMulan/HuaMulan_Profile.tres" id="14_huamulan"]
+[ext_resource type="Resource" uid="uid://blixiaolong01pf" path="res://Fighters/LiXiaolong/LiXiaolong_Profile.tres" id="15_lixiaolong"]
 
 [sub_resource type="Resource" id="Resource_q6gag"]
 script = ExtResource("2_w00mg")
@@ -60,6 +62,42 @@ Profile = ExtResource("5_mamio")
 ColorPalettes = Array[Object]([SubResource("Resource_f2d14"), SubResource("Resource_df8sf"), SubResource("Resource_hc8t8"), SubResource("Resource_fbx8u")])
 metadata/_custom_type_script = "uid://dclkxgxahdy5l"
 
+[sub_resource type="Resource" id="Resource_guanyu_pal"]
+script = ExtResource("2_w00mg")
+PaletteName = "Default"
+Instance = ExtResource("6_hd0eg")
+metadata/_custom_type_script = "uid://dg21wno6w513c"
+
+[sub_resource type="Resource" id="Resource_guanyu"]
+script = ExtResource("3_m8lbm")
+Profile = ExtResource("13_guanyu")
+ColorPalettes = Array[Object]([SubResource("Resource_guanyu_pal")])
+metadata/_custom_type_script = "uid://dclkxgxahdy5l"
+
+[sub_resource type="Resource" id="Resource_huamulan_pal"]
+script = ExtResource("2_w00mg")
+PaletteName = "Default"
+Instance = ExtResource("6_hd0eg")
+metadata/_custom_type_script = "uid://dg21wno6w513c"
+
+[sub_resource type="Resource" id="Resource_huamulan"]
+script = ExtResource("3_m8lbm")
+Profile = ExtResource("14_huamulan")
+ColorPalettes = Array[Object]([SubResource("Resource_huamulan_pal")])
+metadata/_custom_type_script = "uid://dclkxgxahdy5l"
+
+[sub_resource type="Resource" id="Resource_lixiaolong_pal"]
+script = ExtResource("2_w00mg")
+PaletteName = "Default"
+Instance = ExtResource("6_hd0eg")
+metadata/_custom_type_script = "uid://dg21wno6w513c"
+
+[sub_resource type="Resource" id="Resource_lixiaolong"]
+script = ExtResource("3_m8lbm")
+Profile = ExtResource("15_lixiaolong")
+ColorPalettes = Array[Object]([SubResource("Resource_lixiaolong_pal")])
+metadata/_custom_type_script = "uid://dclkxgxahdy5l"
+
 [resource]
 script = ExtResource("1_x0sfh")
-elements = Array[Object]([SubResource("Resource_ug4c5"), SubResource("Resource_r4w1x")])
+elements = Array[Object]([SubResource("Resource_ug4c5"), SubResource("Resource_r4w1x"), SubResource("Resource_guanyu"), SubResource("Resource_huamulan"), SubResource("Resource_lixiaolong")])
