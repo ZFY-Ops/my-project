@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8sunset01rooftop"]
+
+[ext_resource type="Texture2D" path="res://Stages/Sunset_Rooftop/Sunset_Rooftop_BG.jpg" id="1_bg"]
+
+[sub_resource type="StandardMaterial3D" id="bg_mat"]
+albedo_texture = ExtResource("1_bg")
+uv1_scale = Vector3(3, 1, 1)
+
+[sub_resource type="PlaneMesh" id="bg_mesh"]
+material = SubResource("bg_mat")
+size = Vector2(20, 10)
+
+[sub_resource type="BoxMesh" id="floor_mesh"]
+size = Vector3(20, 0.2, 2)
+
+[node name="Sunset_Rooftop" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.722436, 0.540801, -0.430836, 0, 0.623102, 0.782141, 0.691437, -0.565047, 0.450152, 0, 2.2674, 0)
+layers = 3
+shadow_enabled = true
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+mesh = SubResource("bg_mesh")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("floor_mesh")
