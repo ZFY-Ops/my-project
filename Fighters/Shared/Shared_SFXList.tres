@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="SoundsList" format=3 uid="uid://k31pv0ejfv2s"]
+[gd_resource type="Resource" script_class="SoundsList" load_steps=6 format=3 uid="uid://k31pv0ejfv2s"]
 
 [ext_resource type="Script" uid="uid://dxsqcefr6c62n" path="res://Scripts/SakugaEngine/Resources/SoundsList.cs" id="1_yu0fx"]
+[ext_resource type="AudioStream" uid="uid://bwptqa7gtch5e" path="res://Fighters/Shared/Sounds/SFX/SFX_Hit.wav" id="2_hit"]
+[ext_resource type="AudioStream" uid="uid://d3wnl23p8hc18" path="res://Fighters/Shared/Sounds/SFX/SFX_Block.wav" id="3_block"]
+[ext_resource type="AudioStream" uid="uid://b1nlen0sku7w6" path="res://Fighters/Shared/Sounds/SFX/SFX_Clash.wav" id="4_clash"]
+[ext_resource type="AudioStream" uid="uid://c2vcb8tky3sl5" path="res://Fighters/Shared/Sounds/SFX/SFX_Armor.wav" id="5_armor"]
 
 [resource]
 script = ExtResource("1_yu0fx")
-Sounds = null
+Sounds = Array[AudioStream]([ExtResource("2_hit"), ExtResource("3_block"), ExtResource("4_clash"), ExtResource("5_armor")])
