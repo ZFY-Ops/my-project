@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FighterProfile" format=3 uid="uid://bguanyu001pr0f"]
+[gd_resource type="Resource" script_class="FighterProfile" format=3]
 
 [ext_resource type="Script" uid="uid://c5w04j5my3h8p" path="res://Scripts/SakugaEngine/Resources/FighterProfile.cs" id="1"]
 [ext_resource type="Texture2D" uid="uid://cb32b2j8b74fa" path="res://Fighters/Kaede/Sprites/9000-0.png" id="1_scadf"]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DataContainer" format=3 uid="uid://ce1bjf3tpyngv"]
 
 [ext_resource type="Script" uid="uid://dfimvn5rd5jts" path="res://Scripts/SakugaEngine/Resources/FighterIntro.cs" id="31_186y0"]
-[ext_resource type="Resource" uid="uid://blixiaolong01pf" path="res://Fighters/LiXiaolong/LiXiaolong_Profile.tres" id="31_e31u1"]
+[ext_resource type="Resource" path="res://Fighters/LiXiaolong/LiXiaolong_Profile.tres" id="31_e31u1"]
 [ext_resource type="Script" uid="uid://bne635raru5sj" path="res://Scripts/SakugaEngine/Resources/FighterOutro.cs" id="32_1j1r0"]
 [ext_resource type="Resource" uid="uid://bpi3dgk313noc" path="res://Fighters/Kaede/Stances/Kaede_Stance_Main.tres" id="34_jhtjx"]
 [ext_resource type="Resource" uid="uid://d4ceodxb0wubc" path="res://Fighters/Kaede/States/0_Kaede_IdleState.tres" id="35_e31u1"]

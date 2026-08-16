@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bimperialpalace01f"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Texture2D" path="res://Stages/ImperialPalace/palace_bg.jpg" id="1_bg"]
 
