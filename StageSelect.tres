@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StageList" load_steps=16 format=3 uid="uid://bl30fi0muatu1"]
+[gd_resource type="Resource" script_class="StageList" load_steps=22 format=3 uid="uid://bl30fi0muatu1"]
 
 [ext_resource type="PackedScene" uid="uid://dk22qgaiwdb7k" path="res://Stages/Sakuga Default/sakuga_stage_basic.tscn" id="1_h8ykn"]
 [ext_resource type="PackedScene" uid="uid://ctu20phobjd06" path="res://Stages/AFF_Legacy/Meshes/aff_stage_legacy.tscn" id="2_h7n5v"]
@@ -9,6 +9,13 @@
 [ext_resource type="PackedScene" path="res://Stages/BambooForest/bamboo_forest.tscn" id="6_bamboo"]
 [ext_resource type="PackedScene" path="res://Stages/GreatWall/great_wall.tscn" id="7_wall"]
 [ext_resource type="PackedScene" path="res://Stages/ImperialPalace/imperial_palace.tscn" id="8_palace"]
+[ext_resource type="PackedScene" path="res://Stages/Neon_City/neon_city.tscn" id="9_neon"]
+[ext_resource type="PackedScene" path="res://Stages/Sunset_Rooftop/sunset_rooftop.tscn" id="10_sunset"]
+[ext_resource type="Texture2D" path="res://Stages/Neon_City/Neon_City_BG.jpg" id="11_neon_thumb"]
+[ext_resource type="Texture2D" path="res://Stages/Sunset_Rooftop/Sunset_Rooftop_BG.jpg" id="12_sunset_thumb"]
+[ext_resource type="Texture2D" path="res://Stages/BambooForest/bamboo_bg.jpg" id="13_bamboo_thumb"]
+[ext_resource type="Texture2D" path="res://Stages/GreatWall/greatwall_bg.jpg" id="14_wall_thumb"]
+[ext_resource type="Texture2D" path="res://Stages/ImperialPalace/palace_bg.jpg" id="15_palace_thumb"]
 
 [sub_resource type="Resource" id="Resource_i140w"]
 script = ExtResource("2_o2vfw")
@@ -24,27 +31,41 @@ Name = "AFF Legacy Stage"
 Thumbnail = ExtResource("5_i140w")
 metadata/_custom_type_script = "uid://dw7uv2j4bk58i"
 
+[sub_resource type="Resource" id="Resource_neon"]
+script = ExtResource("2_o2vfw")
+Instance = ExtResource("9_neon")
+Name = "Neon City (霓虹都市)"
+Thumbnail = ExtResource("11_neon_thumb")
+metadata/_custom_type_script = "uid://dw7uv2j4bk58i"
+
+[sub_resource type="Resource" id="Resource_sunset"]
+script = ExtResource("2_o2vfw")
+Instance = ExtResource("10_sunset")
+Name = "Sunset Rooftop (日落天台)"
+Thumbnail = ExtResource("12_sunset_thumb")
+metadata/_custom_type_script = "uid://dw7uv2j4bk58i"
+
 [sub_resource type="Resource" id="Resource_bamboo"]
 script = ExtResource("2_o2vfw")
 Instance = ExtResource("6_bamboo")
 Name = "Bamboo Forest (竹林)"
-Thumbnail = ExtResource("2_ufopn")
+Thumbnail = ExtResource("13_bamboo_thumb")
 metadata/_custom_type_script = "uid://dw7uv2j4bk58i"
 
 [sub_resource type="Resource" id="Resource_wall"]
 script = ExtResource("2_o2vfw")
 Instance = ExtResource("7_wall")
 Name = "Great Wall (长城)"
-Thumbnail = ExtResource("5_i140w")
+Thumbnail = ExtResource("14_wall_thumb")
 metadata/_custom_type_script = "uid://dw7uv2j4bk58i"
 
 [sub_resource type="Resource" id="Resource_palace"]
 script = ExtResource("2_o2vfw")
 Instance = ExtResource("8_palace")
 Name = "Imperial Palace (皇宫)"
-Thumbnail = ExtResource("2_ufopn")
+Thumbnail = ExtResource("15_palace_thumb")
 metadata/_custom_type_script = "uid://dw7uv2j4bk58i"
 
 [resource]
 script = ExtResource("4_ufopn")
-elements = Array[Object]([SubResource("Resource_i140w"), SubResource("Resource_07y5t"), SubResource("Resource_bamboo"), SubResource("Resource_wall"), SubResource("Resource_palace")])
+elements = Array[Object]([SubResource("Resource_i140w"), SubResource("Resource_07y5t"), SubResource("Resource_neon"), SubResource("Resource_sunset"), SubResource("Resource_bamboo"), SubResource("Resource_wall"), SubResource("Resource_palace")])
