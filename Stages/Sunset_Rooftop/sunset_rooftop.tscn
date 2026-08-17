@@ -1,6 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8sunset01rooftop"]
+[gd_scene load_steps=8 format=3 uid="uid://b8sunset01rooftop"]
 
 [ext_resource type="Texture2D" path="res://Stages/Sunset_Rooftop/Sunset_Rooftop_BG.jpg" id="1_bg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sunset"]
+sky_top_color = Color(0.6, 0.3, 0.1, 1)
+sky_horizon_color = Color(0.9, 0.5, 0.2, 1)
+
+[sub_resource type="Sky" id="Sky_sunset"]
+sky_material = SubResource("ProceduralSkyMaterial_sunset")
+
+[sub_resource type="Environment" id="Env_sunset"]
+background_mode = 2
+sky = SubResource("Sky_sunset")
+ambient_light_source = 3
+reflected_light_source = 2
 
 [sub_resource type="StandardMaterial3D" id="bg_mat"]
 albedo_texture = ExtResource("1_bg")
@@ -8,7 +21,7 @@ uv1_scale = Vector3(3, 1, 1)
 
 [sub_resource type="PlaneMesh" id="bg_mesh"]
 material = SubResource("bg_mat")
-size = Vector2(20, 10)
+size = Vector2(40, 20)
 
 [sub_resource type="BoxMesh" id="floor_mesh"]
 size = Vector3(20, 0.2, 2)
@@ -20,8 +33,11 @@ transform = Transform3D(0.722436, 0.540801, -0.430836, 0, 0.623102, 0.782141, 0.
 layers = 3
 shadow_enabled = true
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_sunset")
+
 [node name="Background" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
 mesh = SubResource("bg_mesh")
 
 [node name="Floor" type="MeshInstance3D" parent="."]

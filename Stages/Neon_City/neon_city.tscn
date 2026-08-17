@@ -1,6 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b9neon02city"]
+[gd_scene load_steps=8 format=3 uid="uid://b9neon02city"]
 
 [ext_resource type="Texture2D" path="res://Stages/Neon_City/Neon_City_BG.jpg" id="1_bg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_neon"]
+sky_top_color = Color(0.05, 0.02, 0.1, 1)
+sky_horizon_color = Color(0.2, 0.05, 0.15, 1)
+
+[sub_resource type="Sky" id="Sky_neon"]
+sky_material = SubResource("ProceduralSkyMaterial_neon")
+
+[sub_resource type="Environment" id="Env_neon"]
+background_mode = 2
+sky = SubResource("Sky_neon")
+ambient_light_source = 3
+reflected_light_source = 2
 
 [sub_resource type="StandardMaterial3D" id="bg_mat"]
 albedo_texture = ExtResource("1_bg")
@@ -8,7 +21,7 @@ uv1_scale = Vector3(3, 1, 1)
 
 [sub_resource type="PlaneMesh" id="bg_mesh"]
 material = SubResource("bg_mat")
-size = Vector2(20, 10)
+size = Vector2(40, 20)
 
 [sub_resource type="BoxMesh" id="floor_mesh"]
 size = Vector3(20, 0.2, 2)
@@ -20,8 +33,11 @@ transform = Transform3D(0.722436, 0.540801, -0.430836, 0, 0.623102, 0.782141, 0.
 layers = 3
 shadow_enabled = true
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_neon")
+
 [node name="Background" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
 mesh = SubResource("bg_mesh")
 
 [node name="Floor" type="MeshInstance3D" parent="."]

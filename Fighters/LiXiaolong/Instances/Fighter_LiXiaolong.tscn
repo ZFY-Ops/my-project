@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="PackedScene" uid="uid://ccpxqtpspsog5" path="res://Fighters/Kaede/Instances/Fighter_Kaede_Alt.tscn" id="1"]
 [ext_resource type="Resource" path="res://Fighters/LiXiaolong/LiXiaolong_Data.tres" id="2"]
-[ext_resource type="Material" uid="uid://b8lixiaolong01mat" path="res://Fighters/LiXiaolong/Palettes/MAT_lixiaolong_palette.tres" id="3"]
 
 [node name="Kaede_Viewer" instance=ExtResource("1")]
 Data = ExtResource("2")
 
 [node name="Sprite3D" parent="Graphics/Mesh/KaedeGraphics" index="0"]
-material_override = ExtResource("3")
+material_override = null
+modulate = Color(1, 0.75, 0.12, 1)
+texture_filter = 0
