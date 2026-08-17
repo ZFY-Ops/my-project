@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FighterList" load_steps=34 format=3 uid="uid://c8s3ip7gkhwq6"]
+[gd_resource type="Resource" script_class="FighterList" load_steps=37 format=3 uid="uid://c8s3ip7gkhwq6"]
 
 [ext_resource type="Script" uid="uid://c1vwroelg1kwb" path="res://Scripts/SakugaEngine/Resources/FighterList.cs" id="1_x0sfh"]
 [ext_resource type="Script" uid="uid://dg21wno6w513c" path="res://Scripts/SakugaEngine/Resources/ColorPaletteElement.cs" id="2_w00mg"]
@@ -14,6 +14,9 @@
 [ext_resource type="Resource" path="res://Fighters/GuanYu/GuanYu_Profile.tres" id="13_guanyu"]
 [ext_resource type="Resource" path="res://Fighters/HuaMulan/HuaMulan_Profile.tres" id="14_huamulan"]
 [ext_resource type="Resource" path="res://Fighters/LiXiaolong/LiXiaolong_Profile.tres" id="15_lixiaolong"]
+[ext_resource type="PackedScene" path="res://Fighters/GuanYu/Instances/Fighter_GuanYu.tscn" id="16_guanyu_inst"]
+[ext_resource type="PackedScene" path="res://Fighters/HuaMulan/Instances/Fighter_HuaMulan.tscn" id="17_huamulan_inst"]
+[ext_resource type="PackedScene" path="res://Fighters/LiXiaolong/Instances/Fighter_LiXiaolong.tscn" id="18_lixiaolong_inst"]
 
 [sub_resource type="Resource" id="Resource_q6gag"]
 script = ExtResource("2_w00mg")
@@ -66,7 +69,7 @@ metadata/_custom_type_script = "uid://dclkxgxahdy5l"
 [sub_resource type="Resource" id="Resource_guanyu_pal"]
 script = ExtResource("2_w00mg")
 PaletteName = "Default"
-Instance = ExtResource("6_hd0eg")
+Instance = ExtResource("16_guanyu_inst")
 metadata/_custom_type_script = "uid://dg21wno6w513c"
 
 [sub_resource type="Resource" id="Resource_guanyu_alt"]
@@ -84,7 +87,7 @@ metadata/_custom_type_script = "uid://dclkxgxahdy5l"
 [sub_resource type="Resource" id="Resource_huamulan_pal"]
 script = ExtResource("2_w00mg")
 PaletteName = "Default"
-Instance = ExtResource("8_yn7sm")
+Instance = ExtResource("17_huamulan_inst")
 metadata/_custom_type_script = "uid://dg21wno6w513c"
 
 [sub_resource type="Resource" id="Resource_huamulan_alt"]
@@ -102,7 +105,7 @@ metadata/_custom_type_script = "uid://dclkxgxahdy5l"
 [sub_resource type="Resource" id="Resource_lixiaolong_pal"]
 script = ExtResource("2_w00mg")
 PaletteName = "Default"
-Instance = ExtResource("6_hd0eg")
+Instance = ExtResource("18_lixiaolong_inst")
 metadata/_custom_type_script = "uid://dg21wno6w513c"
 
 [sub_resource type="Resource" id="Resource_lixiaolong_alt"]
