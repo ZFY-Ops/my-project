@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" uid="uid://b1ggpw8ltpaid" path="res://Fighters/Kaede/Instances/Fighter_Kaede.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://ccpxqtpspsog5" path="res://Fighters/Kaede/Instances/Fighter_Kaede_Alt.tscn" id="1"]
 [ext_resource type="Resource" path="res://Fighters/HuaMulan/HuaMulan_Data.tres" id="2"]
+[ext_resource type="Material" path="res://Fighters/HuaMulan/Palettes/MAT_huamulan_palette.tres" id="3"]
 
 [node name="Kaede_Viewer" instance=ExtResource("1")]
 Data = ExtResource("2")
 
 [node name="Sprite3D" parent="Graphics/Mesh/KaedeGraphics" index="0"]
-modulate = Color(0.7, 0.85, 1.3, 1)
+material_override = ExtResource("3")

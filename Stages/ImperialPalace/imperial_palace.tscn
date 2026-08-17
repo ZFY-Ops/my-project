@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://b8imperial01palace"]
 
 [ext_resource type="Texture2D" path="res://Stages/ImperialPalace/palace_bg.jpg" id="1_bg"]
 
@@ -19,12 +19,15 @@ reflected_light_source = 2
 albedo_texture = ExtResource("1_bg")
 uv1_scale = Vector3(3, 1, 1)
 
-[sub_resource type="BoxMesh" id="Mesh_palace_bg"]
-material = SubResource("Mat_palace_bg")
-size = Vector3(40, 12, 0.1)
+[sub_resource type="StandardMaterial3D" id="Mat_palace_floor"]
+albedo_color = Color(0.4, 0.25, 0.15, 1)
 
-[sub_resource type="BoxMesh" id="Mesh_floor"]
+[sub_resource type="PlaneMesh" id="Mesh_palace_bg"]
 material = SubResource("Mat_palace_bg")
+size = Vector2(40, 20)
+
+[sub_resource type="BoxMesh" id="Mesh_palace_floor"]
+material = SubResource("Mat_palace_floor")
 size = Vector3(20, 0.2, 2)
 
 [node name="ImperialPalace_Stage" type="Node3D"]
@@ -39,8 +42,8 @@ environment = SubResource("Env_palace")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-mesh = SubResource("Mesh_floor")
+mesh = SubResource("Mesh_palace_floor")
 
 [node name="Background" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
 mesh = SubResource("Mesh_palace_bg")

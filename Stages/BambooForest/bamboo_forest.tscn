@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://b8bamboo01forest"]
 
 [ext_resource type="Texture2D" path="res://Stages/BambooForest/bamboo_bg.jpg" id="1_bg"]
 
@@ -19,12 +19,15 @@ reflected_light_source = 2
 albedo_texture = ExtResource("1_bg")
 uv1_scale = Vector3(3, 1, 1)
 
-[sub_resource type="BoxMesh" id="Mesh_bamboo_bg"]
-material = SubResource("Mat_bamboo_bg")
-size = Vector3(40, 12, 0.1)
+[sub_resource type="StandardMaterial3D" id="Mat_bamboo_floor"]
+albedo_color = Color(0.2, 0.3, 0.15, 1)
 
-[sub_resource type="BoxMesh" id="Mesh_floor"]
+[sub_resource type="PlaneMesh" id="Mesh_bamboo_bg"]
 material = SubResource("Mat_bamboo_bg")
+size = Vector2(40, 20)
+
+[sub_resource type="BoxMesh" id="Mesh_bamboo_floor"]
+material = SubResource("Mat_bamboo_floor")
 size = Vector3(20, 0.2, 2)
 
 [node name="BambooForest_Stage" type="Node3D"]
@@ -39,8 +42,8 @@ environment = SubResource("Env_bamboo")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-mesh = SubResource("Mesh_floor")
+mesh = SubResource("Mesh_bamboo_floor")
 
 [node name="Background" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
 mesh = SubResource("Mesh_bamboo_bg")
