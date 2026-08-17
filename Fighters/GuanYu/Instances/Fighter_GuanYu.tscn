@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ccpxqtpspsog5" path="res://Fighters/Kaede/Instances/Fighter_Kaede_Alt.tscn" id="1"]
 [ext_resource type="Resource" path="res://Fighters/GuanYu/GuanYu_Data.tres" id="2"]
-[ext_resource type="Material" path="res://Fighters/GuanYu/Palettes/MAT_guanyu_palette.tres" id="3"]
+[ext_resource type="Material" uid="uid://b8guanyu01mat" path="res://Fighters/GuanYu/Palettes/MAT_guanyu_palette.tres" id="3"]
 
 [node name="Kaede_Viewer" instance=ExtResource("1")]
 Data = ExtResource("2")

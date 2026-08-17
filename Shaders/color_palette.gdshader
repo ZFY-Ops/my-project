@@ -18,7 +18,7 @@ vec4 swap_color(vec4 color) {
             return texture(palette_out, uv);
         }
     }
-    //return color;
+    return color;
 }
 
 void fragment() {
