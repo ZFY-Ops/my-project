@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8greatwall01stage"]
+[gd_scene load_steps=22 format=3 uid="uid://b8greatwall01stage"]
 
 [ext_resource type="Texture2D" path="res://Stages/GreatWall/greatwall_bg.jpg" id="1_bg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wall"]
-sky_top_color = Color(0.4, 0.4, 0.5, 1)
-sky_horizon_color = Color(0.6, 0.5, 0.4, 1)
+sky_top_color = Color(0.35, 0.35, 0.5, 1)
+sky_horizon_color = Color(0.6, 0.45, 0.3, 1)
+ground_bottom_color = Color(0.3, 0.25, 0.15, 1)
+ground_horizon_color = Color(0.4, 0.3, 0.2, 1)
 
 [sub_resource type="Sky" id="Sky_wall"]
 sky_material = SubResource("ProceduralSkyMaterial_wall")
@@ -12,15 +14,29 @@ sky_material = SubResource("ProceduralSkyMaterial_wall")
 [sub_resource type="Environment" id="Env_wall"]
 background_mode = 2
 sky = SubResource("Sky_wall")
+ambient_light_color = Color(0.4, 0.35, 0.2, 1)
+ambient_light_energy = 0.5
 ambient_light_source = 3
 reflected_light_source = 2
+fog_enabled = true
+fog_light_color = Color(0.4, 0.3, 0.15, 1)
+fog_density = 0.05
 
 [sub_resource type="StandardMaterial3D" id="Mat_wall_bg"]
 albedo_texture = ExtResource("1_bg")
 uv1_scale = Vector3(3, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="Mat_wall_floor"]
-albedo_color = Color(0.35, 0.3, 0.25, 1)
+albedo_color = Color(0.3, 0.25, 0.18, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="Mat_wall_stone"]
+albedo_color = Color(0.4, 0.35, 0.28, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Mat_wall_dark"]
+albedo_color = Color(0.25, 0.2, 0.15, 1)
+roughness = 0.9
 
 [sub_resource type="PlaneMesh" id="Mesh_wall_bg"]
 material = SubResource("Mat_wall_bg")
@@ -29,6 +45,14 @@ size = Vector2(40, 20)
 [sub_resource type="BoxMesh" id="Mesh_wall_floor"]
 material = SubResource("Mat_wall_floor")
 size = Vector3(20, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="Mesh_wall_segment"]
+material = SubResource("Mat_wall_stone")
+size = Vector3(3, 4, 0.5)
+
+[sub_resource type="BoxMesh" id="Mesh_wall_tower"]
+material = SubResource("Mat_wall_dark")
+size = Vector3(1.5, 5, 1)
 
 [node name="GreatWall_Stage" type="Node3D"]
 
@@ -47,3 +71,43 @@ mesh = SubResource("Mesh_wall_floor")
 [node name="Background" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
 mesh = SubResource("Mesh_wall_bg")
+
+[node name="SpotLight3D_L" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -6, 4, -4)
+light_color = Color(0.9, 0.7, 0.4, 1)
+light_energy = 3.0
+spot_range = 12.0
+spot_attenuation = 0.8
+spot_angle = 35.0
+
+[node name="SpotLight3D_R" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 6, 4, -4)
+light_color = Color(0.9, 0.7, 0.4, 1)
+light_energy = 3.0
+spot_range = 12.0
+spot_attenuation = 0.8
+spot_angle = 35.0
+
+[node name="WallSegmentL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, -3)
+mesh = SubResource("Mesh_wall_segment")
+
+[node name="WallSegmentR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -3)
+mesh = SubResource("Mesh_wall_segment")
+
+[node name="WatchTowerL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.5, -4)
+mesh = SubResource("Mesh_wall_tower")
+
+[node name="WatchTowerR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -4)
+mesh = SubResource("Mesh_wall_tower")
+
+[node name="Battlement1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4.2, -3)
+mesh = SubResource("Mesh_wall_tower")
+
+[node name="Battlement2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.2, -3)
+mesh = SubResource("Mesh_wall_tower")

@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8sunset01rooftop"]
+[gd_scene load_steps=22 format=3 uid="uid://b8sunset01rooftop"]
 
 [ext_resource type="Texture2D" path="res://Stages/Sunset_Rooftop/Sunset_Rooftop_BG.jpg" id="1_bg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sunset"]
-sky_top_color = Color(0.6, 0.3, 0.1, 1)
-sky_horizon_color = Color(0.9, 0.5, 0.2, 1)
+sky_top_color = Color(0.5, 0.25, 0.1, 1)
+sky_horizon_color = Color(0.85, 0.45, 0.15, 1)
+ground_bottom_color = Color(0.3, 0.15, 0.08, 1)
+ground_horizon_color = Color(0.5, 0.25, 0.1, 1)
+sun_color = Color(1, 0.7, 0.3, 1)
+sun_angle_max = 35.0
+sun_curve = 0.15
 
 [sub_resource type="Sky" id="Sky_sunset"]
 sky_material = SubResource("ProceduralSkyMaterial_sunset")
@@ -12,19 +17,46 @@ sky_material = SubResource("ProceduralSkyMaterial_sunset")
 [sub_resource type="Environment" id="Env_sunset"]
 background_mode = 2
 sky = SubResource("Sky_sunset")
+ambient_light_color = Color(0.6, 0.35, 0.15, 1)
+ambient_light_energy = 0.7
 ambient_light_source = 3
 reflected_light_source = 2
+fog_enabled = true
+fog_light_color = Color(0.55, 0.3, 0.12, 1)
+fog_density = 0.04
 
-[sub_resource type="StandardMaterial3D" id="bg_mat"]
+[sub_resource type="StandardMaterial3D" id="Mat_sunset_bg"]
 albedo_texture = ExtResource("1_bg")
 uv1_scale = Vector3(3, 1, 1)
 
-[sub_resource type="PlaneMesh" id="bg_mesh"]
-material = SubResource("bg_mat")
+[sub_resource type="StandardMaterial3D" id="Mat_sunset_floor"]
+albedo_color = Color(0.2, 0.18, 0.15, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="Mat_sunset_metal"]
+albedo_color = Color(0.25, 0.22, 0.2, 1)
+metallic = 0.7
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="Mat_sunset_concrete"]
+albedo_color = Color(0.3, 0.25, 0.2, 1)
+roughness = 0.9
+
+[sub_resource type="PlaneMesh" id="Mesh_sunset_bg"]
+material = SubResource("Mat_sunset_bg")
 size = Vector2(40, 20)
 
-[sub_resource type="BoxMesh" id="floor_mesh"]
+[sub_resource type="BoxMesh" id="Mesh_sunset_floor"]
+material = SubResource("Mat_sunset_floor")
 size = Vector3(20, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="Mesh_sunset_railing"]
+material = SubResource("Mat_sunset_metal")
+size = Vector3(0.1, 1.2, 0.1)
+
+[sub_resource type="BoxMesh" id="Mesh_sunset_unit"]
+material = SubResource("Mat_sunset_concrete")
+size = Vector3(2, 1.5, 1)
 
 [node name="Sunset_Rooftop" type="Node3D"]
 
@@ -32,14 +64,64 @@ size = Vector3(20, 0.2, 2)
 transform = Transform3D(0.722436, 0.540801, -0.430836, 0, 0.623102, 0.782141, 0.691437, -0.565047, 0.450152, 0, 2.2674, 0)
 layers = 3
 shadow_enabled = true
+light_color = Color(1, 0.75, 0.4, 1)
+light_energy = 1.2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_sunset")
 
-[node name="Background" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
-mesh = SubResource("bg_mesh")
-
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-mesh = SubResource("floor_mesh")
+mesh = SubResource("Mesh_sunset_floor")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+mesh = SubResource("Mesh_sunset_bg")
+
+[node name="SpotLight3D_Warm" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -6, 4, -4)
+light_color = Color(1, 0.5, 0.2, 1)
+light_energy = 3.5
+spot_range = 12.0
+spot_attenuation = 0.8
+spot_angle = 35.0
+
+[node name="SpotLight3D_Gold" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 6, 4, -4)
+light_color = Color(1, 0.6, 0.25, 1)
+light_energy = 3.5
+spot_range = 12.0
+spot_attenuation = 0.8
+spot_angle = 35.0
+
+[node name="Railing1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.6, -3)
+mesh = SubResource("Mesh_sunset_railing")
+
+[node name="Railing2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.6, -3)
+mesh = SubResource("Mesh_sunset_railing")
+
+[node name="Railing3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.6, -3)
+mesh = SubResource("Mesh_sunset_railing")
+
+[node name="Railing4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, -3)
+mesh = SubResource("Mesh_sunset_railing")
+
+[node name="Railing5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.6, -3)
+mesh = SubResource("Mesh_sunset_railing")
+
+[node name="Railing6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.6, -3)
+mesh = SubResource("Mesh_sunset_railing")
+
+[node name="ACUnit1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.75, -3.5)
+mesh = SubResource("Mesh_sunset_unit")
+
+[node name="ACUnit2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.75, -3.5)
+mesh = SubResource("Mesh_sunset_unit")

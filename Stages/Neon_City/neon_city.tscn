@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b9neon02city"]
+[gd_scene load_steps=24 format=3 uid="uid://b9neon02city"]
 
 [ext_resource type="Texture2D" path="res://Stages/Neon_City/Neon_City_BG.jpg" id="1_bg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_neon"]
 sky_top_color = Color(0.05, 0.02, 0.1, 1)
-sky_horizon_color = Color(0.2, 0.05, 0.15, 1)
+sky_horizon_color = Color(0.15, 0.05, 0.2, 1)
+ground_bottom_color = Color(0.02, 0.02, 0.05, 1)
+ground_horizon_color = Color(0.08, 0.03, 0.12, 1)
 
 [sub_resource type="Sky" id="Sky_neon"]
 sky_material = SubResource("ProceduralSkyMaterial_neon")
@@ -12,19 +14,60 @@ sky_material = SubResource("ProceduralSkyMaterial_neon")
 [sub_resource type="Environment" id="Env_neon"]
 background_mode = 2
 sky = SubResource("Sky_neon")
+ambient_light_color = Color(0.15, 0.05, 0.2, 1)
+ambient_light_energy = 0.5
 ambient_light_source = 3
 reflected_light_source = 2
+fog_enabled = true
+fog_light_color = Color(0.1, 0.05, 0.15, 1)
+fog_density = 0.1
 
-[sub_resource type="StandardMaterial3D" id="bg_mat"]
+[sub_resource type="StandardMaterial3D" id="Mat_neon_bg"]
 albedo_texture = ExtResource("1_bg")
 uv1_scale = Vector3(3, 1, 1)
+emission_enabled = true
+emission_energy_multiplier = 0.3
 
-[sub_resource type="PlaneMesh" id="bg_mesh"]
-material = SubResource("bg_mat")
+[sub_resource type="StandardMaterial3D" id="Mat_neon_floor"]
+albedo_color = Color(0.08, 0.05, 0.12, 1)
+roughness = 0.3
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="Mat_neon_cyan"]
+albedo_color = Color(0, 0.3, 0.5, 1)
+emission_enabled = true
+emission = Color(0, 0.8, 1, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_neon_magenta"]
+albedo_color = Color(0.4, 0, 0.3, 1)
+emission_enabled = true
+emission = Color(1, 0, 0.6, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_neon_building"]
+albedo_color = Color(0.05, 0.05, 0.08, 1)
+roughness = 0.9
+
+[sub_resource type="PlaneMesh" id="Mesh_neon_bg"]
+material = SubResource("Mat_neon_bg")
 size = Vector2(40, 20)
 
-[sub_resource type="BoxMesh" id="floor_mesh"]
+[sub_resource type="BoxMesh" id="Mesh_neon_floor"]
+material = SubResource("Mat_neon_floor")
 size = Vector3(20, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="Mesh_neon_strip_cyan"]
+material = SubResource("Mat_neon_cyan")
+size = Vector3(0.15, 4, 0.1)
+
+[sub_resource type="BoxMesh" id="Mesh_neon_strip_mag"]
+material = SubResource("Mat_neon_magenta")
+size = Vector3(0.15, 5, 0.1)
+
+[sub_resource type="BoxMesh" id="Mesh_neon_building"]
+material = SubResource("Mat_neon_building")
+size = Vector3(3, 8, 0.5)
 
 [node name="Neon_City" type="Node3D"]
 
@@ -36,10 +79,58 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_neon")
 
-[node name="Background" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
-mesh = SubResource("bg_mesh")
-
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-mesh = SubResource("floor_mesh")
+mesh = SubResource("Mesh_neon_floor")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+mesh = SubResource("Mesh_neon_bg")
+
+[node name="SpotLight3D_Cyan" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -6, 4, -4)
+light_color = Color(0.2, 0.8, 1, 1)
+light_energy = 4.0
+spot_range = 12.0
+spot_attenuation = 0.8
+spot_angle = 35.0
+
+[node name="SpotLight3D_Magenta" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 6, 4, -4)
+light_color = Color(1, 0.2, 0.6, 1)
+light_energy = 4.0
+spot_range = 12.0
+spot_attenuation = 0.8
+spot_angle = 35.0
+
+[node name="NeonStrip1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, -3)
+mesh = SubResource("Mesh_neon_strip_cyan")
+
+[node name="NeonStrip2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -3)
+mesh = SubResource("Mesh_neon_strip_mag")
+
+[node name="NeonStrip3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.5, -4)
+mesh = SubResource("Mesh_neon_strip_mag")
+
+[node name="NeonStrip4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -4)
+mesh = SubResource("Mesh_neon_strip_cyan")
+
+[node name="Building1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, -5)
+mesh = SubResource("Mesh_neon_building")
+
+[node name="Building2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, -5)
+mesh = SubResource("Mesh_neon_building")
+
+[node name="NeonStrip5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 7, -4.8)
+mesh = SubResource("Mesh_neon_strip_cyan")
+
+[node name="NeonStrip6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 7, -4.8)
+mesh = SubResource("Mesh_neon_strip_mag")
